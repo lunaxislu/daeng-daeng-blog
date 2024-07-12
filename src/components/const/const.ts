@@ -17,7 +17,8 @@ export const CONTAINER_STYLE: CSSProperties = {
 }
 
 export const MAP_STYLE: CSSProperties = {
-  width: '100%',
+  marginTop: '20px',
+  width: '400px',
   height: '600px',
   position: 'relative',
   overflow: 'hidden',
@@ -27,7 +28,23 @@ export const MAP_CENTER = { lat: 37.5616381543437, lng: 126.996862574927 }
 const getAnimalHospitalData = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
 })
+const getAnimalPh = axios.create({
+  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+})
+
 export const getAnimalData = async (query: string) => {
-  const { data } = await getAnimalHospitalData(`LOCALDATA_020301_DB/1/${query}/01`)
+  const res = await Promise.all([
+    getAnimalHospitalData(`LOCALDATA_020301_DB/1/${query}/01`),
+    getAnimalPh(`LOCALDATA_020302_DB/1/${query}/01`),
+  ])
+  const data = res
+    .map((res) => {
+      const response = res.data
+      for (let key in response) {
+        return response[key].row
+      }
+    })
+    .flat()
+
   return data
 }

@@ -63,6 +63,7 @@ const Kakao = () => {
   useEffect(() => {
     if (!data) return
     address2Result()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db, data])
 
   return (

@@ -1,7 +1,7 @@
 import KakaoPro4 from '@/components/pro4/KakaoPro4'
 import useKakaoLoader from '@/hooks/useKakaoLoader'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { Profiler } from 'react'
 import proj4 from 'proj4'
 const KakaoPagePro4 = () => {
   const { query } = useRouter()

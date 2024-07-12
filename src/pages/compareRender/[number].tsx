@@ -1,15 +1,15 @@
-import KakaoAddress from '@/components/address/KakaoAddress'
+import CompareAddressVsPro4 from '@/components/compareAddressVsPro4/CompareAddressVsPro4'
 import useKakaoLoader from '@/hooks/useKakaoLoader'
 import { useRouter } from 'next/router'
-import React, { Profiler } from 'react'
+import React from 'react'
 
-const KakaoPageAPI = () => {
+const CompareMap = () => {
   const { query } = useRouter()
   const [loading, error] = useKakaoLoader()
 
   const number = query.number as string
   if (loading) return <div>로딩중</div>
-  return <KakaoAddress query={number} />
+  return <CompareAddressVsPro4 query={number} />
 }
 
-export default KakaoPageAPI
+export default CompareMap
