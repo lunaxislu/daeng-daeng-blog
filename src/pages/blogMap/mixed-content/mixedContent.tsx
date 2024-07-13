@@ -1,18 +1,26 @@
+import { getAnimalData } from "@/components/blog-map/const/const";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Head from "next/head";
-import React from "react";
+
+import React, { Fragment } from "react";
 /**
  * @param LOCALDATA_020301_${api_query}/01/endPoint
  */
 const getAnimalHospitalData = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
+  headers: {
+    "Content-Security-Policy": "upgrade-insecure-requests",
+  },
 });
 /**
  * @param LOCALDATA_020302_${api_query}/01/endPoint
  */
 const getAnimalPharamcyData = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+  headers: {
+    "Content-Security-Policy": "upgrade-insecure-requests",
+  },
 });
 const getDataArr = [
   getAnimalHospitalData("LOCALDATA_020301_DB/1/30/01"),
@@ -21,7 +29,9 @@ const getDataArr = [
 
 const getParalledData = async () => {
   try {
+    console.log("??");
     const results = await Promise.all(getDataArr);
+
     return results;
   } catch (err) {
     console.log(err);
@@ -30,18 +40,14 @@ const getParalledData = async () => {
 const MixedContentError = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["ANIMAL"],
-    queryFn: getParalledData,
+    queryFn: () => getAnimalData("30"),
   });
 
   console.log(data);
   return (
-    <Head>
-      <meta
-        httpEquiv="Content-Security-Policy"
-        content="upgrade-insecure-requests"
-      />
+    <Fragment>
       <div>MixedContentError</div>;
-    </Head>
+    </Fragment>
   );
 };
 
