@@ -20,23 +20,37 @@ const MixedContent = ({ endRange }: { endRange: string }) => {
   });
 
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
-      {SEOUL_LOCATION.map((Area) => (
+    <div style={{ display: "flex", gap: "20px", flexDirection: "column" }}>
+      <div style={{ display: "flex", gap: "20px" }}>
+        {SEOUL_LOCATION.map((Area) => (
+          <span
+            onClick={() => setQuery(Area.api_query)}
+            key={Area.location}
+            style={{
+              width: "80px",
+              backgroundColor: "wheat",
+              color: "black",
+              height: "80px",
+              textAlign: "center",
+            }}
+          >
+            {Area.location}
+          </span>
+        ))}
+      </div>
+      <div style={{ alignSelf: "center", fontSize: "24px" }}>
+        데이터가 mixed content없이 불러와진{" "}
         <span
-          onClick={() => setQuery(Area.api_query)}
-          key={Area.location}
           style={{
-            width: "120px",
-            backgroundColor: "wheat",
-            color: "black",
-            height: "80px",
-            textAlign: "center",
+            textDecoration: "underline",
+            color: "bisque",
+            fontSize: "32px",
           }}
         >
-          {Area.location}
-        </span>
-      ))}
-      <div>데이터가 mixed content없이 불러와진 {data?.length}</div>
+          {data ? data?.length : 0}
+        </span>{" "}
+        개
+      </div>
     </div>
   );
 };
