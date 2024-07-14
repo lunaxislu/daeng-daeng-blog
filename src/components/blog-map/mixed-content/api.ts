@@ -14,7 +14,8 @@ export const ParalledQueriesAnimalMedicineAPI = async (
     const results = await Promise.all(
       DYNAMIC_API_QURIES.map(async (query) => {
         const result = await axios.post(
-          `${process.env.NEXT_PUBLIC_SEOUL_API_URL}`,
+          `${process.env.NEXT_PUBLIC_MY_API_URL}`,
+
           {
             area,
             api_type: query.api_type, // api router에서 조건부 함수 처리위해서

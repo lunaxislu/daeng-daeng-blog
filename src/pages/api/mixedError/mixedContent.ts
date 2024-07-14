@@ -24,7 +24,7 @@ export default async function handler(
     const result = await api_fn[
       api_type as "animal_hospital" | "animal_pharmacy"
     ](`${query_type}${area}/1/${endRange}/01`);
-
+    console.log(result);
     res.status(200).send({ data: result.data, query_string: query_type, area });
   } catch (err) {
     res.status(500).send(err);
