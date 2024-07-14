@@ -8,7 +8,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 // const animalPharamcyAPI = axios.create({
 //   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
 // });
-
 const animalHospitalAPI = axios.create({});
 
 const animalPharamcyAPI = axios.create({});
