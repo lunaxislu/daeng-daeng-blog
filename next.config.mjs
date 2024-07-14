@@ -9,10 +9,6 @@ const nextConfig = {
         destination: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
       },
       {
-        source: "/api/mixedError/mixedContents",
-        destination: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
-      },
-      {
         source: "/api/rewrite/rewrite",
         destination: "/about",
       },
