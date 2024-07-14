@@ -1,13 +1,17 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const animalHospitalAPI = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
-});
+// const animalHospitalAPI = axios.create({
+//   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
+// });
 
-const animalPharamcyAPI = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
-});
+// const animalPharamcyAPI = axios.create({
+//   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+// });
+
+const animalHospitalAPI = axios.create({});
+
+const animalPharamcyAPI = axios.create({});
 
 export default async function handler(
   req: NextApiRequest,
