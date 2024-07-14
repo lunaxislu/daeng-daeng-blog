@@ -47,7 +47,7 @@ const MixedContent = ({ endRange }: { endRange: string }) => {
             fontSize: "32px",
           }}
         >
-          {data ? data?.length : 0}
+          {data ? data?.length : isLoading}
         </span>{" "}
         개
       </div>
