@@ -19,7 +19,6 @@ const MixedContent = ({ endRange }: { endRange: string }) => {
     // staleTime: Infinity,
   });
 
-  console.log(data);
   return (
     <div style={{ display: "flex", gap: "20px" }}>
       {SEOUL_LOCATION.map((Area) => (
