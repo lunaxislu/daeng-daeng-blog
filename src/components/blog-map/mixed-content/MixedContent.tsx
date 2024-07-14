@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { refineSeoulApiData } from "./util";
 const MixedContent = ({ endRange }: { endRange: string }) => {
   const [query, setQuery] = useState<string | null>(null);
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: [SEOUL_QUERY.MEDICINE, query],
     queryFn: () => ParalledQueriesAnimalMedicineAPI(query, endRange),
     enabled: !!query,
@@ -47,9 +47,8 @@ const MixedContent = ({ endRange }: { endRange: string }) => {
             fontSize: "32px",
           }}
         >
-          {data ? data?.length : isLoading}
+          {isLoading ? "로딩중..." : data?.length + "개"}
         </span>{" "}
-        개
       </div>
     </div>
   );
