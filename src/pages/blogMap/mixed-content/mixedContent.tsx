@@ -9,27 +9,20 @@ import React, { Fragment } from "react";
  */
 const getAnimalHospitalData = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
-  headers: {
-    "Content-Security-Policy": "upgrade-insecure-requests",
-  },
 });
 /**
  * @param LOCALDATA_020302_${api_query}/01/endPoint
  */
 const getAnimalPharamcyData = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
-  headers: {
-    "Content-Security-Policy": "upgrade-insecure-requests",
-  },
 });
 const getDataArr = [
-  getAnimalHospitalData("LOCALDATA_020301_DB/1/30/01"),
-  getAnimalPharamcyData("LOCALDATA_020302_DB/1/30/01"),
+  getAnimalHospitalData(`LOCALDATA_020301_DB/1/30/01`),
+  getAnimalPharamcyData(`LOCALDATA_020302_DB/1/30/01`),
 ];
 
 const getParalledData = async () => {
   try {
-    console.log("??");
     const results = await Promise.all(getDataArr);
 
     return results;

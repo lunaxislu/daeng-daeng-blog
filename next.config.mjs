@@ -13,8 +13,15 @@ const cspHeader = `
 
 const nextConfig = {
   reactStrictMode: true,
-  headers: async () => {
-    return [];
+  async rewrites() {
+    return [
+      {
+        // source : 유저가 진입할 path
+        // destination : 유저가 이동할 path
+        source: "/rewrite",
+        destination: "/",
+      },
+    ];
   },
 };
 
