@@ -12,6 +12,10 @@ const nextConfig = {
         source: "/api/rewrite/rewrite",
         destination: "/about",
       },
+      {
+        source: "/hasMixedContent",
+        destination: `${process.env.NEXT_PUBLIC_SEOUL_API_URL}`,
+      },
     ];
   },
 

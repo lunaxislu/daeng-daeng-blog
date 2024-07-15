@@ -2,28 +2,49 @@ import React from "react";
 
 import { Fragment, useState } from "react";
 
-import {
-  hasMixedContentParalledQueries,
-  ParalledQueriesAnimalMedicineAPI,
-} from "@/components/blog-map/mixed-content/api";
+import { ParalledQueriesAnimalMedicineAPI } from "@/components/blog-map/mixed-content/api";
 import {
   SEOUL_LOCATION,
   SEOUL_QUERY,
 } from "@/components/blog-map/mixed-content/const";
 import { useQuery } from "@tanstack/react-query";
 import { refineSeoulApiData } from "../components/blog-map/mixed-content/util";
+import axios from "axios";
 const HasMixedContent = ({ endRange }: { endRange: string }) => {
   const [query, setQuery] = useState<string | null>(null);
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: [SEOUL_QUERY.MEDICINE, query],
-    queryFn: () => hasMixedContentParalledQueries(query, "50"),
+  /**
+   * @param LOCALDATA_020301_${api_query}/01/endPoint
+   */
+  const getAnimalHospitalData = axios.create({
+    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
+  });
+  /**
+   * @param LOCALDATA_020302_${api_query}/01/endPoint
+   */
+  const getAnimalPharamcyData = axios.create({
+    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+  });
+  const getDataArr = [
+    getAnimalHospitalData("LOCALDATA_020301_DB/1/1000/01"),
+    getAnimalPharamcyData("LOCALDATA_020302_DB/1/1000/01"),
+  ];
+
+  const getParalledData = async () => {
+    try {
+      const results = await Promise.all(getDataArr);
+      return results;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["ANIMAL"],
+    queryFn: getParalledData,
     enabled: !!query,
     // enabled: !!api_query && api_type === 'hospital',
-    select: refineSeoulApiData,
-    // refetchOnWindowFocus: false,
-    // staleTime: Infinity,
   });
-
+  console.log(data);
   return (
     <div style={{ display: "flex", gap: "20px", flexDirection: "column" }}>
       <div style={{ display: "flex", gap: "20px" }}>
