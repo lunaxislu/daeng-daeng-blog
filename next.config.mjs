@@ -13,7 +13,7 @@ const nextConfig = {
         destination: "/about",
       },
       {
-        source: "api/mixedError/hasMixedContent",
+        source: "/api/mixedError/hasMixedContent",
         destination: `${process.env.NEXT_PUBLIC_SEOUL_API_URL}`,
       },
     ];
