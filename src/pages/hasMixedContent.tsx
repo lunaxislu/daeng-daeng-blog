@@ -42,6 +42,9 @@ const HasMixedContent = ({ endRange }: { endRange: string }) => {
     queryKey: ["ANIMAL"],
     queryFn: getParalledData,
     enabled: !!query,
+    select(data) {
+      return data.data.LOCALDATA_020301_DB.row;
+    },
   });
   console.log(data);
   return (
