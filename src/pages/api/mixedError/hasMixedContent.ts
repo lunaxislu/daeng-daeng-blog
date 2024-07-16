@@ -6,17 +6,15 @@ const animalMedicineAPI = axios.create({
 });
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const { api_type, query_type, area, endRange } = req.body;
   console.log("🚀 ~ body:", req.body);
 
   try {
-    const result = await animalMedicineAPI(
-      `${query_type}${area}/1/${endRange}/01`,
-    );
+    const result = await animalMedicineAPI("LOCALDATA_020301_DB/1/10");
     console.log(result);
-    res.status(200).send({ data: result.data, query_string: query_type, area });
+    res.status(200).send({ data: result.data });
   } catch (err) {
     res.status(500).send(err);
   }

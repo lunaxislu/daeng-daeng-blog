@@ -31,8 +31,8 @@ const HasMixedContent = ({ endRange }: { endRange: string }) => {
 
   const getParalledData = async () => {
     try {
-      const results = await Promise.all(getDataArr);
-      return results;
+      const results = await axios("/api/mixedError/hasMixedContent");
+      return results.data;
     } catch (err) {
       console.log(err);
     }
