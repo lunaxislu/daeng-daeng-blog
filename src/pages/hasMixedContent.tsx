@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 import { ParalledQueriesAnimalMedicineAPI } from "@/components/blog-map/mixed-content/api";
 import {
@@ -16,13 +16,13 @@ const HasMixedContent = ({ endRange }: { endRange: string }) => {
    * @param LOCALDATA_020301_${api_query}/01/endPoint
    */
   const getAnimalHospitalData = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
+    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_MEDICINE}`,
   });
   /**
    * @param LOCALDATA_020302_${api_query}/01/endPoint
    */
   const getAnimalPharamcyData = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+    baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_MEDICINE}`,
   });
   const getDataArr = [
     getAnimalHospitalData("LOCALDATA_020301_DB/1/1000/01"),
@@ -42,7 +42,6 @@ const HasMixedContent = ({ endRange }: { endRange: string }) => {
     queryKey: ["ANIMAL"],
     queryFn: getParalledData,
     enabled: !!query,
-    // enabled: !!api_query && api_type === 'hospital',
   });
   console.log(data);
   return (
