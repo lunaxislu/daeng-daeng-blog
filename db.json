@@ -1,3 +1,11 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "018e",
+      "email": "test@test.com",
+      "password": "123456",
+      "passwordConfirm": "123456",
+      "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdEB0ZXN0LmNvbQ.pEMrDeN-FOYXN4JPzwh5BZpoPUldVTL4bVEe6CsimII"
+    }
+  ]
 }
