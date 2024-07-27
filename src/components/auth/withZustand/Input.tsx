@@ -8,7 +8,7 @@ import {
 
 interface Input_Props<
   TField extends FieldValues,
-  TName extends FieldPath<TField>
+  TName extends FieldPath<TField>,
 > {
   control: Control<TField>;
   name: TName;
@@ -18,12 +18,17 @@ const Input = <T extends FieldValues, N extends FieldPath<T>>({
   control,
   name,
   placeholder,
+  ...props
 }: Input_Props<T, N>) => {
   const method = useController({ control, name });
 
   return (
     <div>
-      <input {...method.field} placeholder={placeholder} />
+      <input
+        {...method.field}
+        placeholder={placeholder}
+        style={{ borderBottom: "1px solid black" }}
+      />
       {method.fieldState.error && <div>{method.fieldState.error.message}</div>}
     </div>
   );

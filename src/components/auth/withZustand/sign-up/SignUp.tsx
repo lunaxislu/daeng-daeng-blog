@@ -3,8 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import Input from "./Input";
-import jwt from "jsonwebtoken";
+import Input from "../Input";
 
 const schema = z
   .object({
@@ -28,7 +27,7 @@ const schema = z
   });
 
 type Schema = z.infer<typeof schema>;
-const WithZustand = () => {
+const SignUp = () => {
   const method = useForm<Schema>({
     resolver: zodResolver(schema),
   });
@@ -38,27 +37,26 @@ const WithZustand = () => {
     console.log(data);
   };
   return (
-    <FormProvider {...method}>
-      <form onSubmit={method.handleSubmit(submitEvent)}>
-        <Input
-          control={method.control}
-          name="email"
-          placeholder="email입력바람"
-        />
-        <Input
-          control={method.control}
-          name="password"
-          placeholder="비번입력"
-        />
-        <Input
-          control={method.control}
-          name="passwordConfirm"
-          placeholder="비번확인"
-        />
-        <button type="submit">버튼</button>
-      </form>
-    </FormProvider>
+    <form
+      onSubmit={method.handleSubmit(submitEvent)}
+      style={{ color: "black" }}
+    >
+      <Input
+        control={method.control}
+        name="email"
+        placeholder="email입력바람"
+      />
+      <Input control={method.control} name="password" placeholder="비번입력" />
+      <Input
+        control={method.control}
+        name="passwordConfirm"
+        placeholder="비번확인"
+      />
+      <button type="submit" style={{ backgroundColor: "skyblue" }}>
+        버튼
+      </button>
+    </form>
   );
 };
 
-export default WithZustand;
+export default SignUp;
