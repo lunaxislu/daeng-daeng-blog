@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import useAuthStore, {
+  getAuthValue,
+} from "@/components/auth/withZustand/hook/useAuthState";
+import { useEffect, useLayoutEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {

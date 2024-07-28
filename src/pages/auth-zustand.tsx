@@ -1,4 +1,7 @@
+import SingIn from "@/components/auth/withZustand/sign-in/SingIn";
 import SignUp from "@/components/auth/withZustand/sign-up/SignUp";
+import withAuth from "@/components/auth/withZustand/withAuth";
+
 import React from "react";
 
 const AuthZustand = () => {
@@ -12,6 +15,8 @@ const AuthZustand = () => {
       }}
     >
       <SignUp />
+
+      <SingIn />
     </div>
   );
 };
