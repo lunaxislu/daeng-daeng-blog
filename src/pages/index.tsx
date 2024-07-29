@@ -4,9 +4,16 @@ import useAuthStore, {
   getAuthValue,
 } from "@/components/auth/withZustand/hook/useAuthState";
 import { useEffect, useLayoutEffect } from "react";
+import { GetServerSidePropsContext } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-export default function Home() {
+export default function Home({
+  cookie,
+}: {
+  cookie: { [key: string]: string };
+}) {
+  console.log(getAuthValue("token"));
+  console.log(cookie);
   return <div></div>;
 }
 
@@ -26,3 +33,9 @@ function fileToArrayBuffer(file: Blob) {
     reader.readAsDataURL(file);
   });
 }
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  console.log(ctx);
+  const { cookies } = ctx.req;
+
+  return { props: { cookie: cookies } };
+};

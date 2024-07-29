@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Control,
+  Controller,
   FieldPath,
   FieldValues,
   useController,
@@ -27,7 +28,7 @@ const Input = <T extends FieldValues, N extends FieldPath<T>>({
       <input
         {...method.field}
         placeholder={placeholder}
-        style={{ borderBottom: "1px solid black" }}
+        style={{ borderBottom: "1px solid black", color: "black" }}
       />
       {method.fieldState.error && <div>{method.fieldState.error.message}</div>}
     </div>
