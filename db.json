@@ -1,45 +1,11 @@
 {
   "users": [
     {
-      "id": "018e",
-      "email": "test@test.com",
+      "id": "bdce",
+      "email": "cmk0905@naver.com",
       "password": "123456",
       "passwordConfirm": "123456",
-      "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdEB0ZXN0LmNvbQ.pEMrDeN-FOYXN4JPzwh5BZpoPUldVTL4bVEe6CsimII"
-    },
-    {
-      "id": "1ff5",
-      "email": "testtest@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "8306",
-      "email": "testtest@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "50ea",
-      "email": "testtest@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "661f",
-      "email": "testtest@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "116f",
-      "email": "testtest@test.com",
-      "password": "123456",
-      "passwordConfirm": "123456",
-      "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdHRlc3RAdGVzdC5jb20.OfzYIpkpFObtGKpTCEeUcyzBpGZVCi6x6TETqpkP6t0"
-    },
-    {
-      "id": "7508",
-      "email": "testtest@gmail.com",
-      "password": "123456",
-      "passwordConfirm": "123456",
-      "token": "eyJhbGciOiJIUzI1NiJ9.dGVzdHRlc3RAZ21haWwuY29t.RmlYeZn8IMK4bCuYJZYb0-C5itquQH7SCrhR0PBz07w"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtazA5MDVAbmF2ZXIuY29tIiwiaWF0IjoxNzIyMzI2NTI4LCJleHAiOjE3MjI1NDI1Mjh9.cOYWvIY0KnOmDdO9-dp64ewiAAIqFu1AC4VGgT48-VE"
     }
   ]
 }

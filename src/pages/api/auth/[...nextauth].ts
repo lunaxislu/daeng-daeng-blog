@@ -3,7 +3,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import { decode } from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import jwt from "jsonwebtoken";
 interface IAuth {
   email: string;
   password: string;
@@ -48,6 +48,10 @@ export const authOptions = {
     // //무언가 데이터를 넘겨주고 싶으면 jwt 토큰에 데이터를 유지하고 session 에서 처리해줘야함
     async jwt({ token, user, session, trigger }) {
       // user라는 객체는 authorize에서 return 해준 값이다.
+      const payload = jwt.verify(user.token, "ijasidjf");
+      console.log(payload, "decoding한 payload임");
+      //{ email: 'cmk0905@naver.com', iat: 1722326528, exp: 1722542528 }
+      // iat: 1722326528, exp: 1722542528
       if (user) {
         token.role = "user";
         token.accessToken = user.token;

@@ -9,7 +9,9 @@ export default async function handler(
   try {
     const { body } = req;
 
-    const token = jwt.sign(body.email, "secret");
+    const token = jwt.sign({ email: body.email }, "secret", {
+      expiresIn: "60h",
+    });
 
     console.log(token);
     const { data } = await axios.post("http://localhost:4000/users", {

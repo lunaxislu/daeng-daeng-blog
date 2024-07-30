@@ -6,8 +6,8 @@ const HOME_PAGE = "/";
 export default withAuth(
   async function middleware(req: NextRequestWithAuth) {
     const auth = req.nextauth;
-    console.log(req.url);
-    if (req.nextUrl.pathname === AUTH_PAGE && auth) {
+    console.log(auth);
+    if (req.nextUrl.pathname === AUTH_PAGE && auth.token) {
       //return Response.redirect(req.url);// 이렇게 하면 무한 redirection된다.
       return Response.redirect(new URL(HOME_PAGE, req.url));
     }
