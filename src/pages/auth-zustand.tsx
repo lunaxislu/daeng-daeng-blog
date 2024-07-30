@@ -1,6 +1,6 @@
 import SingIn from "@/components/auth/withZustand/sign-in/SingIn";
 import SignUp from "@/components/auth/withZustand/sign-up/SignUp";
-import withAuth from "@/components/auth/withZustand/withAuth";
+import HocPatternWithAuth from "@/components/auth/withZustand/HocPatternWithAuth";
 
 import React from "react";
 

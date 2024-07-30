@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect } from "react";
 import useAuthStore from "./hook/useAuthState";
 import { useRouter } from "next/router";
 
-const withAuth = (WrappedComponent: React.ComponentType) => {
+const HocPatternWithAuth = (WrappedComponent: React.ComponentType) => {
   const Component = () => {
     const isLogin = useAuthStore((state) => state.isLogin);
     const router = useRouter();
@@ -16,7 +16,7 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
   return Component;
 };
 
-export default withAuth;
+export default HocPatternWithAuth;
 
 // const withAuth =
 //   <P,>(WrappedComponent: React.ComponentType<P>) =>

@@ -6,7 +6,7 @@ import Input from "../Input";
 import axios from "axios";
 import { setAuthInSession } from "../hook/useAuthState";
 import { useRouter } from "next/router";
-import withAuth from "../withAuth";
+import HocPatternWithAuth from "../HocPatternWithAuth";
 
 const schema = z.object({
   email: z.string().email(),
