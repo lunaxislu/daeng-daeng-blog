@@ -14,10 +14,6 @@ import { GetServerSidePropsContext } from "next";
 import { signOut } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
-export default function Home({
-  cookie,
-}: {
-  cookie: { [key: string]: string };
-}) {
+export default function Home() {
   return <div></div>;
 }

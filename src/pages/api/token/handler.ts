@@ -4,16 +4,13 @@ import jwt from "jsonwebtoken";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   try {
     const { body } = req;
 
-    const token = jwt.sign(body.email, "secret", {
-      expiresIn: "10h",
-    });
-    const verified = jwt.verify(token, "secret");
-    console.log("🚀 ~ verified:", verified);
+    const token = jwt.sign(body.email, "secret");
+
     console.log(token);
     const { data } = await axios.post("http://localhost:4000/users", {
       ...body,

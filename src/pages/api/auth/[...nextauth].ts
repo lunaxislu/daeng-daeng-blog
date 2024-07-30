@@ -27,9 +27,9 @@ export const authOptions = {
         const { email, password } = credentials as IAuth;
         try {
           const { data } = await axios<IAuth, AxiosResponse>(
-            "http://localhost:4000/users",
+            "http://localhost:4000/users"
           );
-
+          console.log(data);
           return data[0];
         } catch (err) {
           if (err instanceof AxiosError) {
@@ -41,14 +41,12 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     // //무언가 데이터를 넘겨주고 싶으면 jwt 토큰에 데이터를 유지하고 session 에서 처리해줘야함
     async jwt({ token, user, session, trigger }) {
-      const payloadExpires = await decode({
-        secret: "secret",
-        token: token.accessToken,
-      });
       // user라는 객체는 authorize에서 return 해준 값이다.
       if (user) {
         token.role = "user";
@@ -68,9 +66,7 @@ export const authOptions = {
       return session;
     },
   },
-  session: {
-    maxAge: 5 * 24 * 60 * 60,
-  },
+
   pages: {
     signIn: "/auth-nextAuth", // default로 생성된 로그인 page를 overriding 할 수 있다. https://next-auth.js.org/configuration/pages
   },

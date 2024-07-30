@@ -10,7 +10,7 @@ enum Pages {
 }
 const Layout = ({ children }: { children: ReactNode }) => {
   const session = useSession();
-
+  console.log(session);
   return (
     <div>
       <div

@@ -25,6 +25,7 @@ const SignIn = () => {
       redirect: false,
       callbackUrl: "/",
     });
+    console.log(result);
   };
 
   return (
