@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { ReactNode, useEffect } from "react";
 import useAuthStore from "../auth/withZustand/hook/useAuthState";
+import { useSession } from "next-auth/react";
 const HOME = "/" || "/zod" || "/auth-zustand";
 
 enum Pages {
@@ -8,16 +9,8 @@ enum Pages {
   zod = "/zod",
 }
 const Layout = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-  const isLogin = useAuthStore((state) => state.isLogin);
-  useEffect(() => {
-    if (
-      (!isLogin && router.pathname === Pages.home) ||
-      router.pathname === Pages.zod
-    ) {
-      router.push("/auth-zustand");
-    }
-  }, [router.pathname, isLogin]);
+  const session = useSession();
+
   return (
     <div>
       <div
@@ -28,7 +21,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           fontSize: "32px",
         }}
       >
-        Header입니다.
+        {session.status}
       </div>
       {children}
     </div>

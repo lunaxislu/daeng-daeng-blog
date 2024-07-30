@@ -8,7 +8,12 @@ export default async function handler(
 ) {
   try {
     const { body } = req;
-    const token = jwt.sign(body.email, "secret");
+
+    const token = jwt.sign(body.email, "secret", {
+      expiresIn: "10h",
+    });
+    const verified = jwt.verify(token, "secret");
+    console.log("🚀 ~ verified:", verified);
     console.log(token);
     const { data } = await axios.post("http://localhost:4000/users", {
       ...body,
@@ -17,6 +22,6 @@ export default async function handler(
 
     res.status(200).send({ data });
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send("에러임");
   }
 }

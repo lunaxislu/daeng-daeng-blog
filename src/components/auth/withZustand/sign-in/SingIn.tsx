@@ -26,10 +26,7 @@ const SingIn = () => {
     resolver: zodResolver(schema),
   });
 
-  console.log(method);
-
   const submitHandle = async (value: Schema) => {
-    console.log(value);
     const { data } = await axios.get<PAuth[]>("http://localhost:4000/users");
     const result = data[0];
     if (!result.token) throw new Error("토큰 없는 아이디가 말이 되냐");
@@ -39,7 +36,6 @@ const SingIn = () => {
         token: result.token,
         isLogin: true,
       });
-      console.log(result);
       document.cookie = `token=${result.token};`;
       // router.push("/");
     }

@@ -33,7 +33,7 @@ const KakaoAddress = ({ query }: { query: string }) => {
           if (status === kakao.maps.services.Status.OK) {
             const coords = new kakao.maps.LatLng(
               result[0].y as any,
-              result[0].x as any
+              result[0].x as any,
             );
 
             // 결과값으로 받은 위치를 마커로 표시합니다
@@ -94,7 +94,7 @@ function onRenderCallback(
   baseDuration: number, // 메모이제이션 없이 하위 트리를 렌더링하는 데 걸리는 예상 시간
   startTime: number, // React가 측정을 시작한 시간
   commitTime: number, // React가 커밋한 시간
-  interactions: Set<string> // 이 업데이트와 관련된 상호작용의 집합
+  interactions: Set<string>, // 이 업데이트와 관련된 상호작용의 집합
 ) {
   // 프로파일링 데이터를 처리하는 로직
   console.log({
