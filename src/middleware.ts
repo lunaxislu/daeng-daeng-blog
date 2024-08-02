@@ -6,7 +6,7 @@ const HOME_PAGE = "/";
 export default withAuth(
   async function middleware(req: NextRequestWithAuth) {
     const auth = req.nextauth;
-    console.log(auth);
+
     if (req.nextUrl.pathname === AUTH_PAGE && auth.token) {
       //return Response.redirect(req.url);// 이렇게 하면 무한 redirection된다.
       return Response.redirect(new URL(HOME_PAGE, req.url));
@@ -24,11 +24,11 @@ export default withAuth(
         return true;
       },
     },
-  }
+  },
 );
 
 export const config = {
-  matcher: [...RESTRIC_ROUTE, "/auth-nextAuth"],
+  matcher: ["/zod", "/cookie", "/redirect", "/auth-nextAuth"],
 };
 
 // 로그인 전, 로그인page O, restricRoute X

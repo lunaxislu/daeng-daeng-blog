@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@next/bundle-analyzer": "^14.2.4",
     "@tanstack/react-query": "^5.45.0",
+    "@tanstack/react-query-devtools": "^5.51.15",
     "@types/proj4": "^2.5.5",
     "axios": "^1.7.2",
     "json-server": "1.0.0-beta.1",

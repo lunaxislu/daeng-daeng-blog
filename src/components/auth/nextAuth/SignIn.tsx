@@ -22,7 +22,7 @@ const SignIn = () => {
   const handleSubmit = async (value: Schema) => {
     const result = await signIn("HTTLogin", {
       ...value,
-      redirect: false,
+      redirect: true,
       callbackUrl: "/",
     });
     console.log(result);

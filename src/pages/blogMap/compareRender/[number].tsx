@@ -6,7 +6,6 @@ import React from "react";
 const CompareMap = () => {
   const { query } = useRouter();
   const [loading, error] = useKakaoLoader();
-
   const number = query.number as string;
   if (loading) return <div>로딩중</div>;
   return <CompareAddressVsPro4 query={number} />;
