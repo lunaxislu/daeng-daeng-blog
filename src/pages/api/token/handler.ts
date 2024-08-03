@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const { body } = req;
@@ -13,7 +13,7 @@ export default async function handler(
       expiresIn: "60h",
     });
 
-    console.log(token);
+    console.log(jwt.verify(token, "secret"));
     const { data } = await axios.post("http://localhost:4000/users", {
       ...body,
       token,

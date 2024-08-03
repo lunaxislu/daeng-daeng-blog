@@ -41,9 +41,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  session: {
-    strategy: "jwt",
-  },
+
   callbacks: {
     // //무언가 데이터를 넘겨주고 싶으면 jwt 토큰에 데이터를 유지하고 session 에서 처리해줘야함
     async jwt({ token, user, session, trigger }) {
@@ -56,6 +54,7 @@ export const authOptions = {
         token.role = "user";
         token.accessToken = user.token;
       }
+
       const expiresIn = 5 * 24 * 60 * 60; // 5 days in seconds
       const expirationDate = Math.floor(Date.now() / 1000) + expiresIn;
       token.exp = expirationDate;
@@ -64,6 +63,7 @@ export const authOptions = {
 
     async session({ session, token, user }) {
       session.user.accessToken = token.accessToken;
+
       // const expiresIn = 5 * 24 * 60 * 60;
       // session.expires = new Date(expiresIn * 1000).toISOString();
 
