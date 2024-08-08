@@ -26,10 +26,16 @@ export const MAP_STYLE: CSSProperties = {
 
 export const MAP_CENTER = { lat: 37.5616381543437, lng: 126.996862574927 };
 const getAnimalHospitalData = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_HOSPITAL}`,
+  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_MEDICINE}`,
+  headers: {
+    "Cache-Control": "max-age=3600",
+  },
 });
 const getAnimalPh = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_PHARAMCY}`,
+  baseURL: `${process.env.NEXT_PUBLIC_ANIMAL_MEDICINE}`,
+  headers: {
+    "Cache-Control": "max-age=3600",
+  },
 });
 
 export const getAnimalData = async (query: string) => {
