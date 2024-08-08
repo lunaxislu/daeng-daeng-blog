@@ -1,5 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 소개
+댕댕냥 프로젝트(공모전)에서 구현한 <U>**기능**</U>, <U>**페이지**</U> 관련,
+ 고민했던것, 궁금했던 것을 작성했던 <U>**코드 모음집**</U>집 입니다. 
 
+- [공모전 블로그 주소 ](https://velog.io/@cmk0905/series/%EA%B3%B5%EB%AA%A8%EC%A0%84)
+- [ Github  주소 ](https://github.com/lunaxislu/daeng-daeng-blog)
+
+
+## index
+
+- mixed content
+- kakao map 기능들
+- proj4라이브러리 - convert from EPSG:5174 to EPSG:4326
+- 카카오 내장 API 좌표 변환 `addressSearch()` 사용
+- cookie 
+- middleware
+- Next Auth
+- BinaryData
+- redirect
+- rewrite 
+- zustand와 인증 처리
+- 비동기 통신 4가지 방법
+- 인증관련 조건부 라우팅 처리 
 ## Getting Started
 
 First, run the development server:
