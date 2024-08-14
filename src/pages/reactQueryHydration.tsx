@@ -42,7 +42,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     queryKey: ["hydration"],
     queryFn: () => getInitalData(1),
     staleTime: 600000,
-    gcTime: 600000000000,
+    gcTime: 60000,
   });
   console.log(ctx.req.url);
   console.log(queryClient);

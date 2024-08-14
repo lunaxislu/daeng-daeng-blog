@@ -53,6 +53,18 @@ const Layout = ({ children }: { children: ReactNode }) => {
         test2
       </Link>
       <Link
+        href={"/reactQueryHydration"}
+        style={{
+          fontSize: "24px",
+          background: "yellow",
+          padding: "2rem",
+          color: "black",
+          fontWeight: "bold",
+        }}
+      >
+        reactQueryHydration
+      </Link>
+      <Link
         href={"/test3"}
         style={{
           fontSize: "24px",
