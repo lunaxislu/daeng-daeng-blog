@@ -11,6 +11,7 @@ enum Pages {
 }
 const Layout = ({ children }: { children: ReactNode }) => {
   const session = useSession();
+  const router = useRouter();
 
   return (
     <div>
@@ -63,7 +64,28 @@ const Layout = ({ children }: { children: ReactNode }) => {
       >
         test3
       </Link>
+      <Link
+        href={"/reactQueryHydration"}
+        style={{
+          fontSize: "24px",
+          background: "yellow",
+          padding: "2rem",
+          color: "black",
+          fontWeight: "bold",
+        }}
+        shallow={true}
+      >
+        hydration
+      </Link>
+
       {children}
+
+      <ul>
+        <li onClick={() => router.push("/test1")}>test1</li>
+        <li onClick={() => router.push("/test2")}>test2</li>
+        <li onClick={() => router.push("/test3")}>test3</li>
+        <li onClick={() => router.push("/reactQueryHydration")}>hydration</li>
+      </ul>
     </div>
   );
 };

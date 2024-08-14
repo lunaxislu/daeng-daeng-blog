@@ -6,16 +6,17 @@ const animalMedicineAPI = axios.create({
 });
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const { api_type, query_type, area, endRange } = req.body;
   console.log("🚀 ~ body:", req.body);
 
   try {
     const result = await animalMedicineAPI(
-      `${query_type}${area}/1/${endRange}/01`,
+      `${query_type}${area}/1/${endRange}/01`
     );
     console.log(result);
+    res.setHeader("Cache-Control", "max-age=3600");
     res.status(200).send({ data: result.data, query_string: query_type, area });
   } catch (err) {
     res.status(500).send(err);

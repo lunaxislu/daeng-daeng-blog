@@ -24,10 +24,10 @@ const getInitalData = async (query: number) => {
 const ReactQueryHydration = ({ data }: { data: Data }) => {
   const queryClient = useQueryClient();
 
-  // const query = useQuery({
-  //   queryKey: ["hydration"],
-  //   queryFn: () => getInitalData(1),
-  // });
+  const query = useQuery({
+    queryKey: ["hydration"],
+    queryFn: () => getInitalData(1),
+  });
   queryClient.setQueryData(["hydration"], data);
   // console.log(queryClient.setQueryData(["hydration"], query.data));
 
@@ -44,7 +44,8 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     staleTime: 600000,
     gcTime: 600000000000,
   });
-
+  console.log(ctx.req.url);
+  console.log(queryClient);
   return {
     props: {
       data,
