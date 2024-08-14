@@ -53,7 +53,7 @@ const withCSR = (next: any) => async (ctx: GetServerSidePropsContext) => {
 export const getServerSideProps = withCSR(
   async (ctx: GetServerSidePropsContext) => {
     const queryClient = new QueryClient();
-
+    ctx.res.setHeader("Cache-Control", "public, max-age=300, s-maxage=600");
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
