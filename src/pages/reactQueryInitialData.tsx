@@ -17,8 +17,8 @@ const ReactQueryInitialData = ({ data }: { data: AxiosResponse }) => {
     queryKey: ["react-query"],
     queryFn: () => getInitalData(1),
     initialData: data,
-    // gcTime: 80000000000,
-    staleTime: 800000,
+
+    staleTime: 80,
     initialDataUpdatedAt: () => {
       return queryClient.getQueryState(["react-query"])?.dataUpdatedAt;
     },

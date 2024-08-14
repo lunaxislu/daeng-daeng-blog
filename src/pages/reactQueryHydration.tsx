@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
 import { GetServerSidePropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
 import React, { useEffect } from "react";
 
 interface Data {
@@ -35,21 +36,28 @@ const ReactQueryHydration = ({ data }: { data: Data }) => {
 };
 
 export default ReactQueryHydration;
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const queryClient = new QueryClient();
-  const data = await getInitalData(1);
-  await queryClient.prefetchQuery({
-    queryKey: ["hydration"],
-    queryFn: () => getInitalData(1),
-    staleTime: 600000,
-    gcTime: 60000,
-  });
-  console.log(ctx.req.url);
-  console.log(queryClient);
-  return {
-    props: {
-      data,
-      dehydrateState: dehydrate(queryClient),
-    },
-  };
-}
+
+const withCSR = (next: any) => async (ctx: GetServerSidePropsContext) => {
+  // check is it a client side navigation
+  const isCSR = ctx.req.url?.startsWith("/_next");
+
+  if (isCSR) {
+    return {
+      props: {},
+    };
+  }
+
+  return next?.(ctx);
+};
+
+export const getServerSideProps = withCSR(
+  async (ctx: GetServerSidePropsContext) => {
+    const queryClient = new QueryClient();
+
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  },
+);
