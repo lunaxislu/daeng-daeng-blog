@@ -8,16 +8,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { api_type, query_type, area, endRange } = req.body;
-  console.log("🚀 ~ body:", req.body);
-
+  const { query_key, api_query } = req.body;
+  console.log(query_key, api_query);
   try {
     const result = await animalMedicineAPI(
-      `${query_type}${area}/1/${endRange}/01`
+      `${query_key}${api_query}/1/${500}/01`
     );
-    console.log(result);
-    res.setHeader("Cache-Control", "max-age=3600");
-    res.status(200).send({ data: result.data, query_string: query_type, area });
+
+    res
+      .status(200)
+      .send({ data: result.data, query_string: query_key, api_query });
   } catch (err) {
     res.status(500).send(err);
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { refineSeoulApiData, T_LocationType } from "../../const/const";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
@@ -13,11 +13,21 @@ const DYNAMIC_API_QURIES = [
 
 const useQueriesLocation = (props: TLocationType) => {
   const { api_query } = props;
-  const [cachedQueryState, setCachedQueryState] = useState<string | null>("");
+  // useCallback,useMemo 하면 되는데 귀찮아서 이걸로 리렌더링 방지
+  const [cachedQueryState, setCachedQueryState] = useState<string | null>(null);
+  // performance 측정할 ref
+  const ref = useRef<{
+    start: null | number;
+    end: null | number;
+  }>({
+    start: null,
+    end: null,
+  });
 
   useEffect(() => {
     if (api_query !== cachedQueryState) {
       setCachedQueryState(api_query);
+      ref.current.start = performance.now();
     }
   }, [cachedQueryState, api_query]);
   const queries = DYNAMIC_API_QURIES.map(({ query_key }) => ({
@@ -32,7 +42,7 @@ const useQueriesLocation = (props: TLocationType) => {
       );
       return response.data; // 데이터를 반환
     },
-    enabled: !!api_query && api_query === cachedQueryState,
+    enabled: !!api_query && api_query === cachedQueryState, // useCallback,useMemo 하면 되는데 귀찮아서 이걸로 리렌더링 방지
     refetchOnWindowFocus: false,
     staleTime: Infinity,
   }));
@@ -45,6 +55,7 @@ const useQueriesLocation = (props: TLocationType) => {
       if (allSuccess) {
         const refinedResults = results.map((result) => result.data);
         const allResults = refineSeoulApiData(refinedResults);
+        ref.current.end = performance.now();
         return allResults;
         // 여기서 데이터를 처리할 수 있습니다.
         // 예: setProcessedData(allResults);
@@ -54,6 +65,7 @@ const useQueriesLocation = (props: TLocationType) => {
 
   return {
     results,
+    ref,
   };
 };
 

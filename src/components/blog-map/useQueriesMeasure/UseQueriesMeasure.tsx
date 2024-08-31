@@ -6,8 +6,8 @@ const UseQueriesMeasure = () => {
   const [apiQueryState, setApiQueryState] = useState<T_LocationType | null>(
     null
   );
-  const { results } = useQueriesLocation({ api_query: apiQueryState });
-  console.log(results?.length);
+  const { results, ref } = useQueriesLocation({ api_query: apiQueryState });
+
   return (
     <div>
       <div className="flex gap-11 flex-wrap">
@@ -26,7 +26,15 @@ const UseQueriesMeasure = () => {
         ))}
       </div>
       <p className="p-10 bg-slate-500 flex justify-center font-bold text-6xl">
-        <span>{apiQueryState}</span>
+        <span>
+          {apiQueryState && (
+            <span>
+              {" "}
+              {apiQueryState} 의{" "}
+              {(ref.current?.end as number) - (ref.current?.start as number)} ms
+            </span>
+          )}
+        </span>
       </p>
     </div>
   );
