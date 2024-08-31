@@ -89,15 +89,33 @@ const Layout = ({ children }: { children: ReactNode }) => {
       >
         hydration
       </Link>
-
+      <Link
+        href={"/blogMap/useQueries/"}
+        style={{
+          fontSize: "24px",
+          background: "yellow",
+          padding: "2rem",
+          color: "black",
+          fontWeight: "bold",
+        }}
+        shallow={true}
+      >
+        useQueries
+      </Link>
+      <Link
+        href={"/blogMap/useQueryPromiseAll/"}
+        style={{
+          fontSize: "24px",
+          background: "yellow",
+          padding: "2rem",
+          color: "black",
+          fontWeight: "bold",
+        }}
+        shallow={true}
+      >
+        useQuery+Promise.all
+      </Link>
       {children}
-
-      <ul>
-        <li onClick={() => router.push("/test1")}>test1</li>
-        <li onClick={() => router.push("/test2")}>test2</li>
-        <li onClick={() => router.push("/test3")}>test3</li>
-        <li onClick={() => router.push("/reactQueryHydration")}>hydration</li>
-      </ul>
     </div>
   );
 };
