@@ -38,10 +38,11 @@ const useQueriesLocation = (props: TLocationType) => {
         {
           api_query,
           query_key,
-        }
+        },
       );
       return response.data; // 데이터를 반환
     },
+    gcTime: Infinity,
     enabled: !!api_query && api_query === cachedQueryState, // useCallback,useMemo 하면 되는데 귀찮아서 이걸로 리렌더링 방지
     refetchOnWindowFocus: false,
     staleTime: Infinity,

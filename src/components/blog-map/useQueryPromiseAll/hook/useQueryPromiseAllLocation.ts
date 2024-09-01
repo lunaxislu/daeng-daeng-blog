@@ -39,10 +39,10 @@ const useQueryPromiseAllLocation = (props: TLocationType) => {
             {
               api_query,
               query_key: query.query_key,
-            }
+            },
           );
           return result.data;
-        })
+        }),
       );
 
       return results;
@@ -61,6 +61,7 @@ const useQueryPromiseAllLocation = (props: TLocationType) => {
       ref.current.end = performance.now();
       return result;
     },
+    gcTime: Infinity,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
   });

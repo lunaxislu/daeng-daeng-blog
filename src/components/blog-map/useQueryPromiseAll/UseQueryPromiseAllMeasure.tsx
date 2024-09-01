@@ -4,12 +4,12 @@ import useQueryPromiseAllLocation from "./hook/useQueryPromiseAllLocation";
 
 const UseQueryPromiseAllMeasure = () => {
   const [apiQueryState, setApiQueryState] = useState<T_LocationType | null>(
-    null
+    null,
   );
   const { data, ref } = useQueryPromiseAllLocation({
     api_query: apiQueryState,
   });
-
+  console.log((ref.current?.end as number) - (ref.current?.start as number));
   return (
     <div>
       <div className="flex gap-11 flex-wrap">

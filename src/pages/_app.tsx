@@ -30,10 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 6000000,
-            // refetchOnMount: false,
-            // refetchOnWindowFocus: false,
-            gcTime: 8000000000000000,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
           },
         },
       }),
